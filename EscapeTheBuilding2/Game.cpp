@@ -2,7 +2,7 @@
 #include <array>
 #include <iostream>
 
-Game::Game(Grid& _Level) : Level(_Level), player(Player(15)), gameState(GameState::MainMenu) {
+Game::Game(Grid& _Level) : Level(_Level), player(Player(15, 10, 10)), gameState(GameState::MainMenu) {
 	terminal_open();
 }
 
@@ -70,18 +70,17 @@ void Game::MainLoop() {
 }
 
 void Game::MovePlayer(int CharCode) {
-	std::array<int, 2> coords = player.GetCoords();
+	Point coords = player.GetCoords();
 	switch (CharCode) {
-	case TK_A: coords[0]--; break;
-	case TK_S: coords[1]++; break;
-	case TK_D: coords[0]++; break;
-	case TK_W: coords[1]--; break;
+	case TK_A: coords.x--; break;
+	case TK_S: coords.y++; break;
+	case TK_D: coords.x++; break;
+	case TK_W: coords.y--; break;
 	}
 	
-	GridCell& cell = Level.GetCell(coords[0], coords[1]);
+	GridCell& cell = Level.GetCell(coords.x, coords.y);
 	if (cell.CellType == GridCellType::FLOOR || cell.CellType == GridCellType::DOOR) {
 		player.SetCoords(coords);
-		std::cout << coords[0] << " " << coords[1] << std::endl;
 		IlluminateMap();
 	}
 }
@@ -92,8 +91,8 @@ void Game::IlluminateMap() {
 		auto& c = Level.GetCell(i);
 		c.Visible = false;
 	}
-	for (int i = coords[0] - 1; i < coords[0] + 1; i++) {
-		for (int j = coords[1] - 1; j < coords[1] + 1; j++) {
+	for (int i = coords.x - 1; i < coords.x + 1; i++) {
+		for (int j = coords.y - 1; j < coords.y + 1; j++) {
 			Level.SetVisibility(i, j, true);
 		}
 	}

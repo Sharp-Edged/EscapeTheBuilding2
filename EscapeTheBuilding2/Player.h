@@ -1,17 +1,18 @@
 #pragma once
-#include <array>
+#include "Common.h"
 
 class Player {
 private:
-	std::array<int, 2> Coords;
-	int Health;
+	Point coords;
+	int health;
 
 public:
-	Player(int _Health);
+	Player(int _health, int _x, int _y);
 	int GetX();
 	int GetY();
-	std::array<int, 2> GetCoords();
+	Point GetCoords();
+	
 	void SetX(int x);
 	void SetY(int y);
-	void SetCoords(std::array<int, 2> _Coords);
+	void SetCoords(Point _Coords);
 };
