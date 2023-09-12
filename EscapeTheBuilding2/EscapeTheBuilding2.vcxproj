@@ -112,6 +112,9 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\BearLibTerminal\Windows64</AdditionalLibraryDirectories>
       <AdditionalDependencies>BearLibTerminal.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>XCOPY "$(SolutionDir)"\Dependencies\BearLibTerminal\Windows64\*.DLL "$(TargetDir)" /D /K /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -131,6 +134,9 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\BearLibTerminal\Windows64</AdditionalLibraryDirectories>
       <AdditionalDependencies>BearLibTerminal.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>XCOPY "$(SolutionDir)"\Dependencies\BearLibTerminal\Windows64\*.DLL "$(TargetDir)" /D /K /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Common.cpp" />
