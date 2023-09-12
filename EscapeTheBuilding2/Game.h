@@ -24,7 +24,7 @@ public:
 	void OpenMainMenu();
 	void OpenSettings();
 
-	void MainLoop();
+	void StartGame();
 	void MovePlayer(int CharCode);
 	void IlluminateMap();
 };

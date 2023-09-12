@@ -60,11 +60,21 @@ static bool CharIs(int Char, std::vector<int> Chars) {
 	return false;
 }
 
-void Game::MainLoop() {
-	int c;
-	while ((c = terminal_read()) != TK_CLOSE) {
-		if (CharIs(c, { TK_A, TK_S, TK_W, TK_D })) {
-			MovePlayer(c);
+void Game::StartGame() {
+	while (true) {
+		terminal_clear();
+
+		int key = terminal_read();
+
+		if (CharIs(key, { TK_A, TK_S, TK_W, TK_D })) {
+			MovePlayer(key);
+		}
+
+		terminal_refresh();
+
+		if (key == TK_ESCAPE || key == TK_CLOSE) {
+			gameState = GameState::Quit;
+			return;
 		}
 	}
 }
@@ -78,6 +88,7 @@ void Game::MovePlayer(int CharCode) {
 	case TK_W: coords.y--; break;
 	}
 	
+	std::cout << coords << std::endl;
 	GridCell& cell = Level.GetCell(coords.x, coords.y);
 	if (cell.CellType == GridCellType::FLOOR || cell.CellType == GridCellType::DOOR) {
 		player.SetCoords(coords);

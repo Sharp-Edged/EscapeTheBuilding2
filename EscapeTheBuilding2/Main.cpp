@@ -10,7 +10,7 @@ int main()
         game.OpenMainMenu();
 
         if (game.gameState == GameState::Game) {
-
+            game.StartGame();
         }
         else if (game.gameState == GameState::Settings) {
             game.OpenSettings();
