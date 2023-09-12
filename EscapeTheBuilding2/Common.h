@@ -7,7 +7,3 @@
 #define HEIGHT 25
 
 using std::cout;
-
-namespace TerminalUtility {
-	void PrintCentered(int row, std::string text);
-}

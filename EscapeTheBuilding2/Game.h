@@ -20,7 +20,10 @@ public:
 	GameState gameState;
 
 	Game(Grid& _Level);
+	
 	void OpenMainMenu();
+	void OpenSettings();
+
 	void MainLoop();
 	void MovePlayer(int CharCode);
 	void IlluminateMap();

@@ -23,13 +23,34 @@ void Game::OpenMainMenu() {
 		int key = terminal_read();
 
 		if (key == TK_ESCAPE || key == TK_CLOSE) {
-			break;
+			gameState = GameState::Quit;
+			return;
 		}
 
 		if (buttonList.HandleKey(key)) { return; }
 	}
+}
 
-	terminal_close();
+void Game::OpenSettings() {
+	while (true) {
+		terminal_clear();
+
+		terminal_print_ext(0, 3, WIDTH, 1, TK_ALIGN_CENTER, "Settings");
+
+		terminal_refresh();
+
+		int key = terminal_read();
+
+		if (key == TK_ESCAPE) {
+			gameState = GameState::MainMenu;
+			return;
+		}
+
+		if (key == TK_CLOSE) {
+			gameState = GameState::Quit;
+			return;
+		}
+	}
 }
 
 static bool CharIs(int Char, std::vector<int> Chars) {

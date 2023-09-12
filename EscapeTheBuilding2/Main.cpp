@@ -13,9 +13,10 @@ int main()
 
         }
         else if (game.gameState == GameState::Settings) {
-
+            game.OpenSettings();
         }
-        else if (game.gameState == GameState::Quit) {
+        
+        if (game.gameState == GameState::Quit) {
             break;
         }
     }
