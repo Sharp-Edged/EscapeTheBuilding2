@@ -3,11 +3,11 @@
 
 int main()
 {
-    Game game;
+    Grid grid(20, 20);
+    Game game(grid);
 
     game.ShowMainMenu();
-
-    while (terminal_read() != TK_CLOSE);
+    game.MainLoop();
 
     terminal_close();
 }
