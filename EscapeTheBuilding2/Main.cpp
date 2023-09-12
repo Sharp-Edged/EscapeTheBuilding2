@@ -3,7 +3,8 @@
 
 int main()
 {
-    Game game;
+    Grid grid(20, 20);
+    Game game(grid);
 
     while (true) {
         game.OpenMainMenu();
