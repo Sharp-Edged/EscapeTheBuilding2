@@ -5,9 +5,19 @@ int main()
 {
     Game game;
 
-    game.ShowMainMenu();
+    while (true) {
+        game.OpenMainMenu();
 
-    while (terminal_read() != TK_CLOSE);
+        if (game.gameState == GameState::Game) {
+
+        }
+        else if (game.gameState == GameState::Settings) {
+
+        }
+        else if (game.gameState == GameState::Quit) {
+            break;
+        }
+    }
 
     terminal_close();
 }
