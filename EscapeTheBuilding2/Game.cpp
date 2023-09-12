@@ -2,7 +2,7 @@
 #include <array>
 #include <iostream>
 
-Game::Game(Grid& _Level) : Level(_Level), player(Player(15)) {
+Game::Game(Grid& _Level) : Level(_Level), player(Player(15)), gameState(GameState::MainMenu) {
 	terminal_open();
 }
 
@@ -14,10 +14,10 @@ void Game::OpenMainMenu() {
 
 	while (true) {
 		terminal_clear();
-		
+
 		terminal_print_ext(0, 3, WIDTH, 1, TK_ALIGN_CENTER, "Escape the building 2");
 		buttonList.Display();
-		
+
 		terminal_refresh();
 
 		int key = terminal_read();
@@ -25,14 +25,11 @@ void Game::OpenMainMenu() {
 		if (key == TK_ESCAPE || key == TK_CLOSE) {
 			break;
 		}
-		
+
 		if (buttonList.HandleKey(key)) { return; }
 	}
 
 	terminal_close();
-void Game::ShowMainMenu() {
-	TerminalUtility::PrintCentered(3, "Escape the building 2");
-	terminal_refresh();
 }
 
 static bool CharIs(int Char, std::vector<int> Chars) {

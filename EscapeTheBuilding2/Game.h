@@ -21,7 +21,6 @@ public:
 
 	Game(Grid& _Level);
 	void OpenMainMenu();
-	void ShowMainMenu();
 	void MainLoop();
 	void MovePlayer(int CharCode);
 	void IlluminateMap();
