@@ -1,21 +1,21 @@
 #pragma once
-#include <vector>
+#include "Common.h"
 
 enum class GridCellType {
-	WALL,
-	FLOOR,
-	ROBOT,
-	CAMERA,
-	DOOR,
-	INTERACTABLE,
-	NONE
+	Wall,
+	Floor,
+	Robot,
+	Camera,
+	Door,
+	Interactable,
+	None
 };
 
 struct GridCell {
 	GridCellType CellType;
 	bool Visible;
 	GridCell() {
-		CellType = GridCellType::NONE;
+		CellType = GridCellType::None;
 		Visible = false;
 	}
 	GridCell(GridCellType Type, bool _Visibility) {
@@ -26,7 +26,7 @@ struct GridCell {
 
 class Grid {
 private:
-	std::vector<GridCell> Data;
+	vector<GridCell> Data;
 	int GridWidth;
 	int GridHeight;
 public:

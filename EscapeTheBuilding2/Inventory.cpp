@@ -26,7 +26,12 @@ void Inventory::Display() {
 			if (x == WIDTH - width && y == height - 1) terminal_put_ext(x, y, 0, 0, 0x255A);
 		}
 	}
+
 	for (int i = 0; i < (int)items.size(); i++) {
+		if (i == selectedItem) terminal_color("orange");
+		
 		terminal_print(WIDTH - width + 2, i + 2, (std::to_string(i + 1) + ". " + items[i]->name).c_str());
+		
+		terminal_color("white");
 	}
 }

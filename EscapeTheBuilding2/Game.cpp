@@ -1,15 +1,17 @@
 #include "Game.h"
-#include <array>
 #include <iostream>
 
-Game::Game(Grid& _Level) : Level(_Level), player(Player(15, 10, 10)), gameState(GameState::MainMenu) {
+Game::Game(Grid& _Level) : Level(_Level), player(Player(15, 10, 10)) {
+	gameState = GameState::MainMenu;
+	inventoryOpen = false;
+
 	terminal_open();
 }
 
 void Game::OpenMainMenu() {
 	ButtonList buttonList(6, 2, TK_ALIGN_CENTER);
-	buttonList.AddButton("1. Play", [&]() { gameState = GameState::Game;  });
-	buttonList.AddButton("2. Settings", [&]() { gameState = GameState::Settings;  });
+	buttonList.AddButton("1. Play", [&]() { gameState = GameState::Game; });
+	buttonList.AddButton("2. Settings", [&]() { gameState = GameState::Settings; });
 	buttonList.AddButton("3. Quit", [&]() { gameState = GameState::Quit; });
 
 	while (true) {
@@ -70,21 +72,25 @@ void Game::StartGame() {
 	while (true) {
 		terminal_clear();
 
-		inventory.Display();
+		if (inventoryOpen) { inventory.Display(); }
 		DisplayStatusBar();
 
 		int key = terminal_peek();
+
+		if (key == TK_ESCAPE || key == TK_CLOSE) {
+			gameState = GameState::Quit;
+			return;
+		}
+
+		if (key == TK_I) {
+			inventoryOpen = !inventoryOpen;
+		}
 
 		if (CharIs(key, { TK_A, TK_S, TK_W, TK_D })) {
 			MovePlayer(key);
 		}
 
 		terminal_refresh();
-
-		if (key == TK_ESCAPE || key == TK_CLOSE) {
-			gameState = GameState::Quit;
-			return;
-		}
 
 		if (terminal_has_input()) terminal_read();
 
@@ -103,7 +109,7 @@ void Game::MovePlayer(int CharCode) {
 	
 	std::cout << coords << std::endl;
 	GridCell& cell = Level.GetCell(coords.x, coords.y);
-	if (cell.CellType == GridCellType::FLOOR || cell.CellType == GridCellType::DOOR) {
+	if (cell.CellType == GridCellType::Floor || cell.CellType == GridCellType::Door) {
 		player.SetCoords(coords);
 		IlluminateMap();
 	}

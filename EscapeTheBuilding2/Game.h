@@ -17,6 +17,8 @@ class Game {
 private:
 	Grid& Level;
 	Player player;
+	bool inventoryOpen;
+
 public:
 	GameState gameState;
 

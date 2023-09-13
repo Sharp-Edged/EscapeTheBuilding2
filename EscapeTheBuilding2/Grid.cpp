@@ -4,7 +4,7 @@
 Grid::Grid(int _GridWidth, int _GridHeight) {
 	GridWidth = _GridWidth;
 	GridHeight = _GridHeight;
-	Data.resize(GridWidth * GridHeight, GridCell(GridCellType::FLOOR, false));
+	Data.resize(GridWidth * GridHeight, GridCell(GridCellType::Floor, false));
 }
 
 GridCell& Grid::GetCell(int x, int y) {
