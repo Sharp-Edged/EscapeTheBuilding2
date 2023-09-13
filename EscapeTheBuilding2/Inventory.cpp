@@ -3,6 +3,7 @@
 Inventory::Inventory(int _width, int _height) {
 	width = _width;
 	height = _height;
+	curItem = 0;
 	items.push_back(std::make_shared<Lockpick>());
 	items.push_back(std::make_shared<Lockpick>());
 	items.push_back(std::make_shared<Lockpick>());
@@ -28,10 +29,19 @@ void Inventory::Display() {
 	}
 
 	for (int i = 0; i < (int)items.size(); i++) {
-		if (i == selectedItem) terminal_color("orange");
+		if (i == curItem) terminal_color("orange");
 		
 		terminal_print(WIDTH - width + 2, i + 2, (std::to_string(i + 1) + ". " + items[i]->name).c_str());
 		
 		terminal_color("white");
+	}
+}
+
+void Inventory::HandleKey(int key) {
+	if (key == TK_UP || key == TK_W) {
+		curItem = (curItem - 1 + items.size()) % items.size();
+	}
+	if (key == TK_DOWN || key == TK_S) {
+		curItem = (curItem + 1) % items.size();
 	}
 }

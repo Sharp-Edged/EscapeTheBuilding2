@@ -86,8 +86,13 @@ void Game::StartGame() {
 			inventoryOpen = !inventoryOpen;
 		}
 
-		if (CharIs(key, { TK_A, TK_S, TK_W, TK_D })) {
-			MovePlayer(key);
+		if (inventoryOpen) {
+			inventory.HandleKey(key);
+		}
+		else {
+			if (CharIs(key, { TK_A, TK_S, TK_W, TK_D })) {
+				MovePlayer(key);
+			}
 		}
 
 		terminal_refresh();
