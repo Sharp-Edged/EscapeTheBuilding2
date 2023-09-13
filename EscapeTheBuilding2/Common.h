@@ -1,12 +1,13 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 #include "BearLibTerminal.h"
 
 #define WIDTH 80
 #define HEIGHT 25
 
-using std::cout;
+using std::cout, std::string, std::vector;
 
 struct Point {
 	int x, y;

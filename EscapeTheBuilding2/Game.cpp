@@ -60,11 +60,20 @@ static bool CharIs(int Char, std::vector<int> Chars) {
 	return false;
 }
 
+void Game::DisplayStatusBar() {
+
+}
+
 void Game::StartGame() {
+	Inventory inventory(20, 10);
+
 	while (true) {
 		terminal_clear();
 
-		int key = terminal_read();
+		inventory.Display();
+		DisplayStatusBar();
+
+		int key = terminal_peek();
 
 		if (CharIs(key, { TK_A, TK_S, TK_W, TK_D })) {
 			MovePlayer(key);
@@ -76,6 +85,10 @@ void Game::StartGame() {
 			gameState = GameState::Quit;
 			return;
 		}
+
+		if (terminal_has_input()) terminal_read();
+
+		terminal_delay(10); // Delta time
 	}
 }
 

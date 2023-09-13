@@ -4,6 +4,7 @@
 #include "ButtonList.h"
 #include "Grid.h"
 #include "Player.h"
+#include "Inventory.h"
 
 enum class GameState {
 	MainMenu,
@@ -23,8 +24,10 @@ public:
 	
 	void OpenMainMenu();
 	void OpenSettings();
+    void StartGame();
+	
+	void DisplayStatusBar();
 
-	void StartGame();
 	void MovePlayer(int CharCode);
 	void IlluminateMap();
 };
