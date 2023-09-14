@@ -43,7 +43,7 @@ ConversionResult lvlToGrid(const char* lvl) {
 		case 'C':  ty = GridCellType::Camera; break;
 		case 'H':  ty = GridCellType::RobotHackingStation; break;
 		}
-		grid.SetCell(i - 2, GridCell(ty, false));
+		grid.SetCell(i - 2, GridCell(ty));
 	}
 	int playerY = playerIdx / w;
 	int playerX = playerIdx % w;

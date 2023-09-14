@@ -117,20 +117,6 @@ void Game::MovePlayer(int CharCode) {
 	GridCell& cell = Level.GetCell(coords.x, coords.y);
 	if (cell.CellType == GridCellType::Floor || cell.CellType == GridCellType::Door) {
 		player.SetCoords(coords);
-		IlluminateMap();
-	}
-}
-
-void Game::IlluminateMap() {
-	auto coords = player.GetCoords();
-	for (int i = 0; i < Level.DataLen(); i++) {
-		auto& c = Level.GetCell(i);
-		c.Visible = false;
-	}
-	for (int i = coords.x - 1; i < coords.x + 1; i++) {
-		for (int j = coords.y - 1; j < coords.y + 1; j++) {
-			Level.SetVisibility(i, j, true);
-		}
 	}
 }
 
@@ -158,5 +144,5 @@ void Game::DrawMap() {
 			terminal_put(i + 1, j + 1, code);
 		}
 	}
-	terminal_put(player.GetX() + 1, player.GetY() + 1, 'P');
+	terminal_put(player.GetX() + 1, player.GetY() + 1, ' ');
 }
