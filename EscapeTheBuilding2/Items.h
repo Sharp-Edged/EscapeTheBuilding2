@@ -21,3 +21,8 @@ struct Lockpick : Item {
 	Lockpick();
 	void UseItem();
 };
+
+struct Murasama : Item {
+	Murasama();
+	void UseItem();
+};
