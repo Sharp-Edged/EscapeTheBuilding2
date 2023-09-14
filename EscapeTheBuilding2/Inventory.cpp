@@ -38,10 +38,19 @@ void Inventory::Display() {
 }
 
 void Inventory::HandleKey(int key) {
+	if (items.empty()) return;
+
 	if (key == TK_UP || key == TK_W) {
 		curItem = (curItem - 1 + items.size()) % items.size();
 	}
+
 	if (key == TK_DOWN || key == TK_S) {
 		curItem = (curItem + 1) % items.size();
+	}
+
+	if (key == TK_ENTER || key == TK_Y) {
+		items[curItem]->UseItem();
+		RemoveItem(curItem);
+		curItem = 0;
 	}
 }
