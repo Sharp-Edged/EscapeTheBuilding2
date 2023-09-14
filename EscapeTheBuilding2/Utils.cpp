@@ -46,6 +46,6 @@ ConversionResult lvlToGrid(const char* lvl) {
 		grid.SetCell(i - 2, GridCell(ty, false));
 	}
 	int playerY = playerIdx / w;
-	int playerX = playerIdx - playerY * w;
+	int playerX = playerIdx % w;
 	return ConversionResult(grid, playerX, playerY);
 }
