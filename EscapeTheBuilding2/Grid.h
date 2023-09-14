@@ -7,7 +7,9 @@ enum class GridCellType {
 	Robot,
 	Camera,
 	Door,
-	Interactable,
+	RobotHackingStation,
+	CameraHackingStation,
+	Exit,
 	None
 };
 
