@@ -17,7 +17,7 @@ void ButtonList::SelectButton(int button) {
 void ButtonList::Display() {
 	int currentRow = firstRow;
 	for (int i = 0; i < (int)buttons.size(); i++) {
-		if (selectedButton == i) { terminal_color("orange"); }
+		if (selectedButton == i) { terminal_color("amber"); }
 		
 		terminal_print_ext(0, currentRow, WIDTH, 1, buttonAlignment, buttons[i].text.c_str());
 

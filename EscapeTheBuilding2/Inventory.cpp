@@ -29,7 +29,7 @@ void Inventory::Display() {
 	}
 
 	for (int i = 0; i < (int)items.size(); i++) {
-		if (i == curItem) terminal_color("orange");
+		if (i == curItem) terminal_color("amber");
 		
 		terminal_print(WIDTH - width + 2, i + 2, (std::to_string(i + 1) + ". " + items[i]->name).c_str());
 		

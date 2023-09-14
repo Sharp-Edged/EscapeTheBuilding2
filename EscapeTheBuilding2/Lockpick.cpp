@@ -12,11 +12,11 @@ struct Skillcheck {
 		threshold = _threshold;
 	}
 
-	double GetDX(double t) {
+	int GetDX(double t) {
 		return radius * cos(t * speedMod + offset);
 	}
 
-	double GetDY(double t) {
+	int GetDY(double t) {
 		return radius * sin(t * speedMod + offset);
 	}
 
