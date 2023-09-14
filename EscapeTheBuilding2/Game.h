@@ -33,5 +33,4 @@ public:
 	void DisplayStatusBar();
 
 	void MovePlayer(int CharCode);
-	void IlluminateMap();
 };

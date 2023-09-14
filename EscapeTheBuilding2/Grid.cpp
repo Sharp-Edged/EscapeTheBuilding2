@@ -4,7 +4,7 @@
 Grid::Grid(int _GridWidth, int _GridHeight) {
 	GridWidth = _GridWidth;
 	GridHeight = _GridHeight;
-	Data.resize(GridWidth * GridHeight, GridCell(GridCellType::Floor, false));
+	Data.resize(GridWidth * GridHeight, GridCell(GridCellType::Floor));
 }
 
 GridCell& Grid::GetCell(int x, int y) {
@@ -43,17 +43,4 @@ void Grid::SetCell(int idx, GridCell Cell) {
 
 int Grid::DataLen() {
 	return Data.size();
-}
-
-void Grid::SetVisibility(int x, int y, bool Visible) {
-	if (x < 0 || x >= GridWidth) {
-		std::cout << "X to large or small\n";
-		throw std::exception();
-	}
-	if (y < 0 || y >= GridHeight) {
-		std::cout << "Y to large or small\n";
-		throw std::exception();
-	}
-	int idx = y * GridWidth + x;
-	Data[idx].Visible = Visible;
 }
