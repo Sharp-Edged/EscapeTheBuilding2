@@ -27,6 +27,8 @@ public:
 	void OpenMainMenu();
 	void OpenSettings();
     void StartGame();
+	void DrawMap();
+	void SetPlayerCoords(int x, int y);
 	
 	void DisplayStatusBar();
 

@@ -73,6 +73,7 @@ void Game::StartGame() {
 		terminal_clear();
 
 		if (inventoryOpen) { inventory.Display(); }
+		else DrawMap();
 		DisplayStatusBar();
 
 		int key = terminal_peek();
@@ -131,4 +132,31 @@ void Game::IlluminateMap() {
 			Level.SetVisibility(i, j, true);
 		}
 	}
+}
+
+void Game::SetPlayerCoords(int x, int y) {
+	player.SetX(x);
+	player.SetY(y);
+}
+
+void Game::DrawMap() {
+	for (int j = 0; j < Level.GridHeight; j++) {
+		for (int i = 0; i < Level.GridWidth; i++) {
+			if (player.GetX() == i && player.GetY() == j) continue;
+
+			int code = 0;
+			switch (Level.GetCell(i, j).CellType) {
+				case GridCellType::Wall: code = 'W'; break;
+				case GridCellType::Floor: code = 'F'; break;
+				case GridCellType::Door: code = 'D'; break;
+				case GridCellType::Camera: code = 'C'; break;
+				case GridCellType::Robot: code = 'R'; break;
+				case GridCellType::CameraHackingStation: code = 'H'; break;
+				case GridCellType::RobotHackingStation: code = 'K'; break;
+				case GridCellType::Exit: code = 'E'; break;
+			}
+			terminal_put(i + 1, j + 1, code);
+		}
+	}
+	terminal_put(player.GetX() + 1, player.GetY() + 1, 'P');
 }

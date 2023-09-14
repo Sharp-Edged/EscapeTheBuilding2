@@ -46,10 +46,14 @@ int Grid::DataLen() {
 }
 
 void Grid::SetVisibility(int x, int y, bool Visible) {
-	int idx = y * GridWidth + x;
-	if (idx >= Data.size()) {
-		std::cout << "Index to large\n";
+	if (x < 0 || x >= GridWidth) {
+		std::cout << "X to large or small\n";
 		throw std::exception();
 	}
+	if (y < 0 || y >= GridHeight) {
+		std::cout << "Y to large or small\n";
+		throw std::exception();
+	}
+	int idx = y * GridWidth + x;
 	Data[idx].Visible = Visible;
 }

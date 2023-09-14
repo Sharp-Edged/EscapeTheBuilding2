@@ -29,9 +29,10 @@ struct GridCell {
 class Grid {
 private:
 	vector<GridCell> Data;
+public:
 	int GridWidth;
 	int GridHeight;
-public:
+
 	Grid(int _GridWidth, int _GridHeight);
 
 	GridCell& GetCell(int x, int y);

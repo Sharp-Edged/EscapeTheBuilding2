@@ -1,10 +1,12 @@
 #include <iostream>
 #include "Game.h"
+#include "Utils.h"
 
 int main()
 {
-    Grid grid(20, 20);
-    Game game(grid);
+    auto res = lvlToGrid(getLevelData(1));
+    Game game(res.grid);
+    game.SetPlayerCoords(res.playerX, res.playerY);
 
     while (true) {
         game.OpenMainMenu();
