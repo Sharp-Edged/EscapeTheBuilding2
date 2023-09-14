@@ -73,6 +73,8 @@ void Game::StartGame() {
 	while (true) {
 		terminal_clear();
 
+		terminal_color("white");
+
 		DrawMap();
 		if (inventoryOpen) { inventory.Display(); }
 		DisplayStatusBar();
@@ -135,6 +137,9 @@ void Game::DrawMap() {
 
 			if (currentCell.CellType == GridCellType::Wall) {
 				terminal_put_ext(x + 1, y + 1, 0, 0, Level.GetWallCharacter(x, y));
+			}
+			else if (currentCell.CellType == GridCellType::Door) {
+				terminal_put_ext(x + 1, y + 1, 0, 0, Level.GetDoorCharacter(x, y));
 			}
 			else {
 				terminal_put(x + 1, y + 1, GridHelpers::CellTypeToChar(Level.GetCell(x, y).CellType));

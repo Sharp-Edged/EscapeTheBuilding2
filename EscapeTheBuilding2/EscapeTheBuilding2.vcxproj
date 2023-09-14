@@ -146,6 +146,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Lockpick.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -156,7 +157,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Inventory.h" />
-    <ClInclude Include="Item.h" />
+    <ClInclude Include="Items.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

@@ -44,6 +44,7 @@ public:
 	bool IsWall(int x, int y);
 	bool IsDoor(int x, int y);
 	int GetWallCharacter(int x, int y);
+	int GetDoorCharacter(int x, int y);
 
 	int DataLen();
 };

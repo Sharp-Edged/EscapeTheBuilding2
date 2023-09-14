@@ -50,7 +50,7 @@ void Inventory::HandleKey(int key) {
 
 	if (key == TK_ENTER || key == TK_Y) {
 		items[curItem]->UseItem();
-		RemoveItem(curItem);
+		//RemoveItem(curItem);
 		curItem = 0;
 	}
 }

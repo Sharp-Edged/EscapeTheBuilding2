@@ -9,6 +9,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Lockpick.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonList.h" />
@@ -17,7 +18,7 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Inventory.h" />
-    <ClInclude Include="Item.h" />
+    <ClInclude Include="Items.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
 </Project>

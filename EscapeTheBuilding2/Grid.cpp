@@ -80,3 +80,8 @@ int Grid::GetWallCharacter(int x, int y) {
 
 	return 'x';
 }
+
+int Grid::GetDoorCharacter(int x, int y) {
+	if (IsWall(x + 1, y)) return 0x2501;
+	return 0x2503;
+}

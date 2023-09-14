@@ -18,13 +18,6 @@ struct Item {
 };
 
 struct Lockpick : Item {
-	Lockpick() {
-		name = "Lockpick";
-		description = "Does things";
-		equipable = true;
-	};
-
-	void UseItem() {
-		cout << "yuuup\n";
-	}
+	Lockpick();
+	void UseItem();
 };

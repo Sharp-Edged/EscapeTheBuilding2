@@ -2,12 +2,16 @@
 
 #include <iostream>
 #include <vector>
+#include <random>
+#include <chrono>
 #include "BearLibTerminal.h"
 
 #define WIDTH 80
 #define HEIGHT 25
 
-using std::cout, std::string, std::vector;
+using std::cout, std::string, std::vector, std::endl;
+
+static std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
 
 struct Point {
 	int x, y;
