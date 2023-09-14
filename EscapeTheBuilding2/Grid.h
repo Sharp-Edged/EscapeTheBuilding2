@@ -10,6 +10,7 @@ enum class GridCellType {
 	RobotHackingStation,
 	CameraHackingStation,
 	Exit,
+	Error,
 	None
 };
 

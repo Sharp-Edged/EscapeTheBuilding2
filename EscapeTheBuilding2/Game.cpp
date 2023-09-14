@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Utils.h"
 #include <iostream>
 
 Game::Game(Grid& _Level) : Level(_Level), player(Player(15, 10, 10)) {
@@ -72,8 +73,8 @@ void Game::StartGame() {
 	while (true) {
 		terminal_clear();
 
+		DrawMap();
 		if (inventoryOpen) { inventory.Display(); }
-		else DrawMap();
 		DisplayStatusBar();
 
 		int key = terminal_peek();
@@ -126,22 +127,11 @@ void Game::SetPlayerCoords(int x, int y) {
 }
 
 void Game::DrawMap() {
-	for (int j = 0; j < Level.GridHeight; j++) {
-		for (int i = 0; i < Level.GridWidth; i++) {
-			if (player.GetX() == i && player.GetY() == j) continue;
-
-			int code = 0;
-			switch (Level.GetCell(i, j).CellType) {
-				case GridCellType::Wall: code = 'W'; break;
-				case GridCellType::Floor: code = 'F'; break;
-				case GridCellType::Door: code = 'D'; break;
-				case GridCellType::Camera: code = 'C'; break;
-				case GridCellType::Robot: code = 'R'; break;
-				case GridCellType::CameraHackingStation: code = 'H'; break;
-				case GridCellType::RobotHackingStation: code = 'K'; break;
-				case GridCellType::Exit: code = 'E'; break;
-			}
-			terminal_put(i + 1, j + 1, code);
+	for (int x = 0; x < Level.GridWidth; x++) {
+		for (int y = 0; y < Level.GridHeight; y++) {
+			if (player.GetX() == x && player.GetY() == y) continue;
+			
+			terminal_put(x + 1, y + 1, GridHelpers::CellTypeToChar(Level.GetCell(x, y).CellType));
 		}
 	}
 	terminal_put(player.GetX() + 1, player.GetY() + 1, ' ');

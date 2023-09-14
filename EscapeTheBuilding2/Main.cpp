@@ -4,7 +4,7 @@
 
 int main()
 {
-    auto res = lvlToGrid(getLevelData(1));
+    auto res = levelToGrid(0);
     Game game(res.grid);
     game.SetPlayerCoords(res.playerX, res.playerY);
 
