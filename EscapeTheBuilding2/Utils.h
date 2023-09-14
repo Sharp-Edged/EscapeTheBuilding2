@@ -33,7 +33,7 @@ namespace GridHelpers {
 	static char CellTypeToChar(GridCellType t) {
 		switch (t) {
 		case GridCellType::Wall: return 'W';
-		case GridCellType::Floor: return 'F';
+		case GridCellType::Floor: return '.';
 		case GridCellType::Door: return 'D';
 		case GridCellType::Camera: return 'C';
 		case GridCellType::Robot: return 'R';

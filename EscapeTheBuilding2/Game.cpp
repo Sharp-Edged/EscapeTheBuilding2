@@ -130,8 +130,15 @@ void Game::DrawMap() {
 	for (int x = 0; x < Level.GridWidth; x++) {
 		for (int y = 0; y < Level.GridHeight; y++) {
 			if (player.GetX() == x && player.GetY() == y) continue;
-			
-			terminal_put(x + 1, y + 1, GridHelpers::CellTypeToChar(Level.GetCell(x, y).CellType));
+
+			GridCell currentCell = Level.GetCell(x, y);
+
+			if (currentCell.CellType == GridCellType::Wall) {
+				terminal_put_ext(x + 1, y + 1, 0, 0, Level.GetWallCharacter(x, y));
+			}
+			else {
+				terminal_put(x + 1, y + 1, GridHelpers::CellTypeToChar(Level.GetCell(x, y).CellType));
+			}
 		}
 	}
 	terminal_put(player.GetX() + 1, player.GetY() + 1, ' ');
